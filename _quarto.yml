@@ -16,6 +16,8 @@ website:
         text: Discussion
       - href: Conclusion.qmd
         text: Conclusion
+      - href: Bib.qmd
+        text: Bibliography
 
 
 format:
