@@ -3,12 +3,22 @@ project:
   output-dir: docs
 
 website:
-  title: "quarto5"
+  title: "Verrucomicrobiota Project"
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: Theme
+      - href: Abstract.qmd
+        text: Abstract
+      - href: Methods.qmd
+        text: Methods
+      - href: Results.qmd
+        text: Results
+      - href: Discussion.qmd
+        text: Discussion
+      - href: Conclusion.qmd
+        text: Conclusion
+
 
 format:
   html:

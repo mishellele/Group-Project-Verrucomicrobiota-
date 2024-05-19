@@ -4,5 +4,23 @@
   },
   "about.qmd": {
     "about.html": "11d1d92b"
+  },
+  "Abstract.qmd": {
+    "Abstract.html": "516845f0"
+  },
+  "Methods.qmd": {
+    "Methods.html": "1f946626"
+  },
+  "Discussion.qmd": {
+    "Discussion.html": "dd53b829"
+  },
+  "Results.qmd": {
+    "Results.html": "f564c7b2"
+  },
+  "Conclusion.qmd": {
+    "Conclusion.html": "26568ff9"
+  },
+  "Theme.qmd": {
+    "Theme.html": "e7d475d1"
   }
 }

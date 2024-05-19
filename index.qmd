@@ -1,11 +1,32 @@
 ---
-title: "quarto5"
+title: "Theme"
 ---
 
-This is a Quarto website.
+“The Verrucomicrobia composed 1.9±0.2% of the microbial community rRNA present in the 85 soil samples examined. The distribution of verrucomicrobial rRNA in the soil reveals that Verrucomicrobia are significantly affected by environmental characteristics that change in relation to time, soil history, and soil depth, and reveals that a statistically significant amount of the variation in verrucomicrobial rRNA abundance can be explained by changes in soil moisture content.” \[Bergmann, et. al. 2001\] <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3260529/>
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+\
 
-```{r}
-1 + 1
-```
+“Verrucomicrobiota cell abundance was coupled with the algae bloom onset and accounted for up to 8% of the bacterioplankton. Glycoside hydrolases, sulfatases, and bacterial microcompartments, critical proteins for the consumption of fucosylated and sulfated polysaccharides, were actively expressed during consecutive spring bloom events…Thus the sequestration of phytoplankton organic matter via methyl pentose sugars likely depend on the activity of specialised Verrucomicrobiota populations.” \[Orellana, et al 2022\] <https://www.nature.com/articles/s41396-021-01105-7>
+
+\
+\
+
+Frequency of bacteria in different ecosystems, how climate change affects this change, frequency in soil could contribute to a possible future environment for preservations
+
+	Could affect humans due to our interactions with such ecosystems 
+
+Possible ecosystems 
+
+-   Plot vs soil/ph/temp (total MAGs and our phylum)
+
+-   Ecosystem, category subtype
+
+-   Elevation and temperature 
+
+-   Elevation and habitat?
+
+-   Elevation and ecosystem subtype
+
+-   Isolation and soil pH
+
+-   soilinwaterpH and elevation
