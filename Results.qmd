@@ -1,9 +1,9 @@
 ---
 title: "Results"
-code_folding: "hide"
+execute:
+  echo: false
 ---
 
-### Loading Libraries and Data
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -74,9 +74,7 @@ NEON_chemistry <- read_tsv("rstudio-export/data/NEON/neon_plot_soilChem1_metadat
   mutate_at("genomicsSampleID", str_replace, "-COMP", "") 
 ```
 
-### Creating Data Frames/Preparing Data
 
-#### NEON
 
 ```{r}
 NEON_data <- NEON_MAGs %>% 
@@ -91,7 +89,7 @@ NEON_data_NIWO <- NEON_data %>%
   filter(str_detect(Site.x, "Niwot Ridge"))
 ```
 
-#### Trees
+
 
 ```{r}
 tree_arc <- read.tree("rstudio-export/data/NEON/gtdbtk.ar53.decorated.tree")

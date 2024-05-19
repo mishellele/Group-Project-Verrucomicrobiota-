@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -143,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Conclusion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Bib.qmd"> 
+    <a class="nav-link" href="./Bib.html"> 
 <span class="menu-text">Bibliography</span></a>
   </li>  
 </ul>
@@ -208,109 +174,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="loading-libraries-and-data" class="level3">
 <h3 class="anchored" data-anchor-id="loading-libraries-and-data">Loading Libraries and Data</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtree)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TDbook)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rphylopic)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treeio)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytree)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TreeTools)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phytools)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggnewscale)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtreeExtra)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstar)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"GOLD_Study_ID_Gs0161344_NEON_2024_4_21.csv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">GOLD Study ID</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Methods</span><span class="st">`</span>, <span class="st">`</span><span class="at">Created By</span><span class="st">`</span>, <span class="st">`</span><span class="at">Date Added</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Lineage</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"Assembly Type"</span> <span class="ot">=</span> <span class="fu">case_when</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"NEON combined assembly"</span> <span class="sc">~</span> <span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Individual"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Assembly Type"</span>, str_replace, <span class="st">"NEON combined assembly"</span>, <span class="st">"Combined"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"d__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"p__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"c__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"o__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"f__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"g__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"s__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Domain"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Phylum"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Class"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Order"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Family"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genus"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Species"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genome Name"</span>, str_replace, <span class="st">"Terrestrial soil microbial communities from "</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site"</span>,<span class="st">"Sample Name"</span>), <span class="st">" - "</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Sample Name"</span>, str_replace, <span class="st">"-comp-1"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site ID"</span>,<span class="st">"subplot.layer.date"</span>), <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>,) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">subplot.layer.date</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Subplot"</span>, <span class="st">"Layer"</span>, <span class="st">"Date"</span>), <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>NEON_metagenomes <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"exported_img_data_Gs0161344_NEON.tsv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">Domain</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sequencing Status</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sequencing Center</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">Genome Name / Sample Name</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="st">'re-annotation'</span>, <span class="at">negate =</span> T)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="st">'WREF plot'</span>, <span class="at">negate =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>NEON_metagenomes <span class="ot">&lt;-</span> NEON_metagenomes <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genome Name"</span>, str_replace, <span class="st">"Terrestrial soil microbial communities from "</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site"</span>,<span class="st">"Sample Name"</span>), <span class="st">" - "</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Sample Name"</span>, str_replace, <span class="st">"-comp-1"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site ID"</span>,<span class="st">"subplot.layer.date"</span>), <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>,) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">subplot.layer.date</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Subplot"</span>, <span class="st">"Layer"</span>, <span class="st">"Date"</span>), <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>NEON_chemistry <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"rstudio-export/data/NEON/neon_plot_soilChem1_metadata.tsv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"genomicsSampleID"</span>, str_replace, <span class="st">"-COMP"</span>, <span class="st">""</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="creating-data-framespreparing-data" class="level3">
 <h3 class="anchored" data-anchor-id="creating-data-framespreparing-data">Creating Data Frames/Preparing Data</h3>
 <section id="neon" class="level4">
 <h4 class="anchored" data-anchor-id="neon">NEON</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="ot">&lt;-</span> NEON_MAGs <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(NEON_metagenomes, <span class="at">by =</span> <span class="st">"Sample Name"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(NEON_chemistry, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Sample Name"</span> <span class="ot">=</span> <span class="st">"genomicsSampleID"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"label"</span> <span class="ot">=</span> <span class="st">"Bin ID"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="ot">&lt;-</span> NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(<span class="fu">str_detect</span>(Phylum, <span class="st">"Verrucomicrobiota"</span>))</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="ot">&lt;-</span> NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Site.x, <span class="st">"Niwot Ridge"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="trees" class="level4">
 <h4 class="anchored" data-anchor-id="trees">Trees</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tree_arc <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"rstudio-export/data/NEON/gtdbtk.ar53.decorated.tree"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tree_bac <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"rstudio-export/data/NEON/gtdbtk.bac120.decorated.tree"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>node_vector_bac <span class="ot">=</span> <span class="fu">c</span>(tree_bac<span class="sc">$</span>tip.label,tree_bac<span class="sc">$</span>node.label)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"Verrucomicrobiota"</span>, node_vector_bac, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "'1.0:p__Verrucomicrobiota; c__Verrucomicrobiae'"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="fu">grep</span>(<span class="st">"Verrucomicrobiota"</span>, node_vector_bac, <span class="at">value =</span> <span class="cn">TRUE</span>), node_vector_bac)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2563</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tree_bac_preorder <span class="ot">&lt;-</span> <span class="fu">Preorder</span>(tree_bac)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tree_Verruco <span class="ot">&lt;-</span> <span class="fu">Subtree</span>(tree_bac_preorder, <span class="dv">2563</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -321,10 +199,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="verrucomicrobiota-soil-temperature-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-soil-temperature-distribution">Verrucomicrobiota Soil Temperature Distribution</h4>
 <div class="cell" data-fig_width="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilTemp)) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of MAGs based on soil temperature"</span>, <span class="at">y =</span> <span class="st">"Verrucomicrobiota MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -337,10 +211,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="verrucomicrobiota-soil-ph-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-soil-ph-distribution">Verrucomicrobiota Soil pH Distribution</h4>
 <div class="cell" data-fig_width="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilInWaterpH)) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of MAGs based on soil pH"</span>, <span class="at">y =</span> <span class="st">"Verrucomicrobiota MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil pH"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -353,10 +223,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="total-mags-soil-temperature" class="level4">
 <h4 class="anchored" data-anchor-id="total-mags-soil-temperature">Total MAGs Soil Temperature</h4>
 <div class="cell" data-fig_width="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilTemp, <span class="at">fill=</span> Phylum)) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Total MAGs based on soil temperature"</span>, <span class="at">y =</span> <span class="st">"MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -369,9 +235,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="total-mags-soil-ph" class="level4">
 <h4 class="anchored" data-anchor-id="total-mags-soil-ph">Total MAGs Soil pH</h4>
 <div class="cell" data-fig_width="12" data-fig_height="6">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilInWaterpH, <span class="at">fill=</span> Phylum)) <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -379,7 +242,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Total MAGs based on soil in water pH"</span>, <span class="at">y =</span> <span class="st">"MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil pH"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$y
 [1] "MAGs"
@@ -401,10 +263,6 @@ attr(,"class")
 <section id="verrucomicrobiota-ecosystem-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-ecosystem-distribution">Verrucomicrobiota Ecosystem Distribution</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>))<span class="sc">+</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Ecosystem Subtypes"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -417,10 +275,6 @@ attr(,"class")
 <section id="verrucomicrobiota-ecosystem-distribution-by-order" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-ecosystem-distribution-by-order">Verrucomicrobiota Ecosystem Distribution by Order</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Ecosystem"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -434,10 +288,6 @@ attr(,"class")
 <section id="verrucomicrobiota-ecosystem-subtypes-by-site" class="level3">
 <h3 class="anchored" data-anchor-id="verrucomicrobiota-ecosystem-subtypes-by-site">Verrucomicrobiota Ecosystem Subtypes by Site</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">fill =</span> <span class="st">`</span><span class="at">Site ID.x</span><span class="st">`</span>))<span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Ecosystem Subtype"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -449,10 +299,6 @@ attr(,"class")
 <section id="total-mags-ecosystem-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="total-mags-ecosystem-distribution">Total MAGs Ecosystem Distribution</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">fill=</span> Phylum))<span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"MAG Distribution by Ecosystem"</span>, <span class="at">y=</span><span class="st">"MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -465,10 +311,6 @@ attr(,"class")
 <section id="verrucomicrobiota-and-ecosystem-subtype-phylogeny" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-and-ecosystem-subtype-phylogeny">Verrucomicrobiota and Ecosystem Subtype Phylogeny</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtree</span>(tree_Verruco, <span class="at">layout=</span><span class="st">"circular"</span>)  <span class="sc">%&lt;+%</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  NEON_data <span class="sc">+</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point2</span>(<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">color=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>))<span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Verrucomicrobiota with Ecosystem Subtypes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -484,10 +326,6 @@ attr(,"class")
 <section id="verrucomicrobiota-distribution-and-nitrogen-content" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-distribution-and-nitrogen-content">Verrucomicrobiota Distribution and Nitrogen Content</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> nitrogenPercent, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Nitrogen Content"</span>, <span class="at">x=</span><span class="st">"Nitrogen Percent"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -500,10 +338,6 @@ attr(,"class")
 <section id="verrucomicrobiota-distribution-and-organic-carbon-content" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-distribution-and-organic-carbon-content">Verrucomicrobiota Distribution and Organic Carbon Content</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> organicCPercent, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Organic Carbon Content"</span>, <span class="at">x=</span><span class="st">"Organic Carbon Percent"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -516,10 +350,6 @@ attr(,"class")
 <section id="verrucomicrobiota-distribution-and-depth-of-sample" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-distribution-and-depth-of-sample">Verrucomicrobiota Distribution and Depth of Sample</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Depth In Meters</span><span class="st">`</span>, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Depth of Sample"</span>, <span class="at">x=</span><span class="st">"Depth (meters)"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -535,10 +365,6 @@ attr(,"class")
 <section id="soil-temperature-and-elevation-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="soil-temperature-and-elevation-at-niwot-ridge">Soil Temperature and Elevation at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>elevation, <span class="at">y=</span>soilTemp))<span class="sc">+</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between soil temperature and elevation at Niwot Ridge"</span>, <span class="at">y =</span> <span class="st">"Soil Temperature"</span>, <span class="at">x=</span> <span class="st">"Elevation (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -551,10 +377,6 @@ attr(,"class")
 <section id="soil-temperature-and-elevation-at-all-sites" class="level4">
 <h4 class="anchored" data-anchor-id="soil-temperature-and-elevation-at-all-sites">Soil Temperature and Elevation at all sites</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>elevation, <span class="at">y=</span>soilTemp))<span class="sc">+</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between soil temperature and elevation at all sites"</span>, <span class="at">y =</span> <span class="st">"Soil Temperature"</span>, <span class="at">x=</span> <span class="st">"Elevation (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -567,10 +389,6 @@ attr(,"class")
 <section id="soil-ph-and-soil-temperature---all-sites" class="level4">
 <h4 class="anchored" data-anchor-id="soil-ph-and-soil-temperature---all-sites">Soil pH and Soil Temperature - All Sites</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>soilTemp, <span class="at">y=</span>soilInWaterpH, <span class="at">color =</span> Phylum))<span class="sc">+</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between temperature and pH"</span>, <span class="at">y =</span> <span class="st">"Soil pH"</span>, <span class="at">x=</span> <span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -583,10 +401,6 @@ attr(,"class")
 <section id="ecosystem-subtype-and-soil-temperature" class="level4">
 <h4 class="anchored" data-anchor-id="ecosystem-subtype-and-soil-temperature">Ecosystem Subtype and Soil Temperature</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">y=</span>soilTemp))<span class="sc">+</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ecosystem Subtype Temperature Distribution"</span>, <span class="at">y=</span><span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -599,10 +413,6 @@ attr(,"class")
 <section id="habitat-of-each-phylum-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="habitat-of-each-phylum-at-niwot-ridge">Habitat of each Phylum at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Habitat</span><span class="st">`</span>, <span class="at">fill=</span>Phylum))<span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Habitat of Samples at NIWO"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -615,11 +425,6 @@ attr(,"class")
 <section id="mineral-vs-organic-soil-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="mineral-vs-organic-soil-at-niwot-ridge">Mineral vs Organic Soil at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO<span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Layer.x))<span class="sc">+</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Abundance of Verrucomicrobiota in Mineral vs. Organic Soil"</span>)<span class="sc">+</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Mineral vs. Organic Soil"</span>, <span class="at">y =</span> <span class="st">"Verrucomicrobiota Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -632,11 +437,6 @@ attr(,"class")
 <section id="elevation-of-samples-found-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="elevation-of-samples-found-at-niwot-ridge">Elevation of Samples Found at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span>   </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">elevation</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="at">color =</span> <span class="st">`</span><span class="at">Phylum</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Elevation and Samples Found at NIWO"</span>)<span class="sc">+</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>, <span class="at">vjust=</span><span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -652,98 +452,9 @@ attr(,"class")
 <h2 class="anchored" data-anchor-id="genomeassembly-data">Genome/Assembly Data</h2>
 <section id="sankey-plots" class="level3">
 <h3 class="anchored" data-anchor-id="sankey-plots">Sankey Plots</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_test <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"rstudio-export/data/NEON/GOLD_Study_ID_Gs0161344_NEON_2024_4_21.csv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove columns that are not needed for data analysis</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">GOLD Study ID</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Methods</span><span class="st">`</span>, <span class="st">`</span><span class="at">Created By</span><span class="st">`</span>, <span class="st">`</span><span class="at">Date Added</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Lineage</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new column with the Assembly Type</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"Assembly Type"</span> <span class="ot">=</span> <span class="fu">case_when</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"NEON combined assembly"</span> <span class="sc">~</span> <span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>,</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Individual"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Assembly Type"</span>, str_replace, <span class="st">"NEON combined assembly"</span>, <span class="st">"Combined"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"d__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"p__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"c__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"o__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"f__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"g__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"s__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Domain"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Phylum"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Class"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Order"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Family"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genus"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Species"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get rid of the the common string "Soil microbial communities from "</span></span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genome Name"</span>, str_replace, <span class="st">"Terrestrial soil microbial communities from "</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the first `-` to split the column in two</span></span>
-<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site"</span>,<span class="st">"Sample Name"</span>), <span class="st">" - "</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get rid of the the common string "S-comp-1"</span></span>
-<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Sample Name"</span>, str_replace, <span class="st">"-comp-1"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># separate the Sample Name into Site ID and plot info</span></span>
-<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site ID"</span>,<span class="st">"subplot.layer.date"</span>), <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>,) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># separate the plot info into 3 columns</span></span>
-<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">subplot.layer.date</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Subplot"</span>, <span class="st">"Layer"</span>, <span class="st">"Date"</span>), <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_ind <span class="ot">&lt;-</span> NEON_MAGs <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Assembly Type</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Individual"</span>) </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_co <span class="ot">&lt;-</span> NEON_MAGs <span class="sc">%&gt;%</span> </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Assembly Type</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Combined"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="all-combined" class="level4">
 <h4 class="anchored" data-anchor-id="all-combined">All Combined</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_co <span class="sc">%&gt;%</span> </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
-<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
-<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
-<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
-<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
-<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
-<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"rstudio-export/data/NEON/all_co_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_all_co.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <iframe src="images/sankey_all_co.txt.html" width="672" height="400px" data-external="1">
 </iframe>
 </div>
@@ -751,53 +462,6 @@ attr(,"class")
 <section id="all-individual" class="level4">
 <h4 class="anchored" data-anchor-id="all-individual">All Individual</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_ind <span class="sc">%&gt;%</span> </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
-<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
-<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
-<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
-<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
-<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
-<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
-<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"rstudio-export/data/NEON/all_ind_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_all_ind.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <iframe src="images/sankey_all_ind.txt.html" width="672" height="400px" data-external="1">
 </iframe>
 </div>
@@ -805,54 +469,6 @@ attr(,"class")
 <section id="verrucomicrobiota-coassemblies" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-coassemblies">Verrucomicrobiota Coassemblies</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_co <span class="sc">%&gt;%</span> </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
-<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
-<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
-<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
-<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
-<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
-<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
-<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"rstudio-export/data/NEON/verruco_co_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_verruco_co.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <iframe src="images/sankey_verruco_co.txt.html" width="672" height="400px" data-external="1">
 </iframe>
 </div>
@@ -860,54 +476,6 @@ attr(,"class")
 <section id="verrucomicrobiota-individual" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-individual">Verrucomicrobiota Individual</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_ind <span class="sc">%&gt;%</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
-<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
-<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
-<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
-<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
-<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
-<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
-<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
-<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"rstudio-export/data/NEON/verruco_ind_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_verruco_ind.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <iframe src="images/sankey_verruco_ind.txt.html" width="672" height="400px" data-external="1">
 </iframe>
 </div>
@@ -915,54 +483,6 @@ attr(,"class")
 <section id="niwot-ridge-individual" class="level4">
 <h4 class="anchored" data-anchor-id="niwot-ridge-individual">Niwot Ridge Individual</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_ind <span class="sc">%&gt;%</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Site ID</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"NIWO"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
-<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
-<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
-<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
-<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
-<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
-<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
-<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"rstudio-export/data/NEON/niwot_ind_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_niwot_ind.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <iframe src="images/sankey_niwot_ind.txt.html" width="672" height="400px" data-external="1">
 </iframe>
 </div>
@@ -973,10 +493,6 @@ attr(,"class")
 <section id="verrucomicrobiota-combined-and-individual-assemblies" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-combined-and-individual-assemblies">Verrucomicrobiota Combined and Individual Assemblies</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtree</span>(tree_Verruco, <span class="at">layout=</span><span class="st">"circular"</span>)  <span class="sc">%&lt;+%</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  NEON_data <span class="sc">+</span> </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point2</span>(<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">color=</span><span class="st">`</span><span class="at">Assembly Type</span><span class="st">`</span>))<span class="sc">+</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Verrucomicrobiota Combined and Individual"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -989,10 +505,6 @@ attr(,"class")
 <section id="verrucomicrobiota-genome-size-and-gene-count" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-genome-size-and-gene-count">Verrucomicrobiota Genome size and Gene Count</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Gene Count</span><span class="st">`</span> ))<span class="sc">+</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Genome Size vs. Gene Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1005,10 +517,6 @@ attr(,"class")
 <section id="verrucomicrobiota-order-genome-size-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-order-genome-size-distribution">Verrucomicrobiota Order Genome Size Distribution</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Order, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span> ))<span class="sc">+</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Order Genome Size Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1021,9 +529,6 @@ attr(,"class")
 <section id="histogram-of-verrucomicrobiota-total-number-of-bases" class="level4">
 <h4 class="anchored" data-anchor-id="histogram-of-verrucomicrobiota-total-number-of-bases">Histogram of Verrucomicrobiota Total Number of Bases</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1036,10 +541,6 @@ attr(,"class")
 <section id="verrucomicrobiota-genus-genome-size-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-genus-genome-size-distribution">Verrucomicrobiota Genus Genome Size Distribution</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Genus, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span> ))<span class="sc">+</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution with Total Number of Base"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1052,10 +553,6 @@ attr(,"class")
 <section id="verrucomicrobiota-genera-gene-count-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-genera-gene-count-distribution">Verrucomicrobiota Genera Gene Count Distribution</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Genus, <span class="at">y=</span> <span class="st">`</span><span class="at">Gene Count</span><span class="st">`</span> ))<span class="sc">+</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Genera Gene Count Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1068,10 +565,6 @@ attr(,"class")
 <section id="s-rrna-distribution-by-genus" class="level4">
 <h4 class="anchored" data-anchor-id="s-rrna-distribution-by-genus">16s rRNA Distribution by Genus</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Genus, <span class="at">y =</span> <span class="st">`</span><span class="at">16s rRNA</span><span class="st">`</span>, <span class="at">fill =</span> Genus))<span class="sc">+</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"16s rRNA Distribution by Genus"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1084,10 +577,6 @@ attr(,"class")
 <section id="verrucomicrobiota-genera-trna-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-genera-trna-distribution">Verrucomicrobiota Genera tRNA Distribution</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Genus, <span class="at">y=</span> <span class="st">`</span><span class="at">tRNA Genes</span><span class="st">`</span> ))<span class="sc">+</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Genera tRNA Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1100,12 +589,6 @@ attr(,"class")
 <section id="novel-verrucomicrobiota-by-order" class="level4">
 <h4 class="anchored" data-anchor-id="novel-verrucomicrobiota-by-order">Novel Verrucomicrobiota by Order</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Order))<span class="sc">+</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Novel Verrucomicrobiota"</span>, <span class="at">y =</span> <span class="st">"Novel Bacterial MAGs"</span>, <span class="at">x=</span> <span class="st">"Order"</span>) <span class="sc">+</span></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1118,12 +601,6 @@ attr(,"class")
 <section id="verrucomicrobiota-scaffold-count-and-bin-completeness" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-scaffold-count-and-bin-completeness">Verrucomicrobiota Scaffold Count and Bin Completeness</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Scaffold Count</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Bin Completeness</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Scaffold Count and MAG Completeness"</span>,</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Scaffold Count"</span>,</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Bin Completeness"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1136,10 +613,6 @@ attr(,"class")
 <section id="verrucomicrobiota-histogram-of-total-number-of-bases-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-histogram-of-total-number-of-bases-at-niwot-ridge">Verrucomicrobiota Histogram of Total Number of Bases at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1152,10 +625,6 @@ attr(,"class")
 <section id="verrucomicrobiota-total-number-of-bases-and-bin-quality" class="level4">
 <h4 class="anchored" data-anchor-id="verrucomicrobiota-total-number-of-bases-and-bin-quality">Verrucomicrobiota Total Number of Bases and Bin quality</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Bin Quality</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum))<span class="sc">+</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between Total Number of Bases and Bin Quality for Verrucomicrobiota"</span>, <span class="at">y =</span> <span class="st">"Total Number of Bases"</span>, <span class="at">x=</span> <span class="st">"Bin Quality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1169,11 +638,6 @@ attr(,"class")
 <section id="verrumicrobiota-gene-count-and-scaffold-count-at-niwot-ridge" class="level3">
 <h3 class="anchored" data-anchor-id="verrumicrobiota-gene-count-and-scaffold-count-at-niwot-ridge">Verrumicrobiota Gene Count and Scaffold Count at Niwot Ridge</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Scaffold Count</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum ))<span class="sc">+</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gene Count and Scaffold Count at NIWO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1186,10 +650,6 @@ attr(,"class")
 <section id="verrucomicrobiota-scaffold-count-and-total-number-of-bases" class="level3">
 <h3 class="anchored" data-anchor-id="verrucomicrobiota-scaffold-count-and-total-number-of-bases">Verrucomicrobiota Scaffold Count and Total Number of Bases</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Scaffold Count</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum ))<span class="sc">+</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gene Count and Scaffold Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1204,11 +664,6 @@ attr(,"class")
 <section id="phyla-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="phyla-at-niwot-ridge">Phyla at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(Phylum), <span class="at">fill=</span>Class))<span class="sc">+</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Phyla at Niwot Ridge"</span>, <span class="at">y =</span> <span class="st">"MAGs"</span>, <span class="at">x=</span> <span class="st">"Phylum"</span>, <span class="at">fill =</span> <span class="st">"Class"</span>)<span class="sc">+</span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1221,10 +676,6 @@ attr(,"class")
 <section id="genome-size-distribution-at-niwot-ridge-boxplot" class="level4">
 <h4 class="anchored" data-anchor-id="genome-size-distribution-at-niwot-ridge-boxplot">Genome Size Distribution at Niwot Ridge boxplot</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span> ))<span class="sc">+</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Genome Size Distribution at Niwot Ridge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1237,10 +688,6 @@ attr(,"class")
 <section id="gene-count-distribution-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="gene-count-distribution-at-niwot-ridge">Gene Count Distribution at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum, <span class="at">y=</span> <span class="st">`</span><span class="at">Gene Count</span><span class="st">`</span>))<span class="sc">+</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gene Count Distribution at Niwot Ridge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1253,10 +700,6 @@ attr(,"class")
 <section id="trna-distribution-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="trna-distribution-at-niwot-ridge">tRNA Distribution at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum, <span class="at">y=</span> <span class="st">`</span><span class="at">tRNA Genes</span><span class="st">`</span> ))<span class="sc">+</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"tRNA Distribution at Niwot Ridge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1269,12 +712,6 @@ attr(,"class")
 <section id="novel-bacteria-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="novel-bacteria-at-niwot-ridge">Novel Bacteria at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum))<span class="sc">+</span></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Phyla of Novel MAGs"</span>, <span class="at">y =</span> <span class="st">"Novel Bacterial MAGs"</span>, <span class="at">x=</span> <span class="st">"Phylum"</span>) <span class="sc">+</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1287,11 +724,6 @@ attr(,"class")
 <section id="nlcdclass-of-samples-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="nlcdclass-of-samples-at-niwot-ridge">nlcdclass of samples at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NEON_data_NIWO, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">nlcdClass</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between nlcdclass and samples at NIWO"</span>,</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sample Name"</span>,</span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"nlcdClass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1304,9 +736,6 @@ attr(,"class")
 <section id="histogram-of-total-number-of-bases-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="histogram-of-total-number-of-bases-at-niwot-ridge">Histogram of Total Number of Bases at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1319,10 +748,6 @@ attr(,"class")
 <section id="total-number-of-bases-and-bin-quality-at-niwot-ridge" class="level4">
 <h4 class="anchored" data-anchor-id="total-number-of-bases-and-bin-quality-at-niwot-ridge">Total Number of Bases and Bin quality at Niwot Ridge</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Bin Quality</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum))<span class="sc">+</span></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between Total Number of Bases and Bin Quality at NIWO"</span>, <span class="at">y =</span> <span class="st">"Total Number of Bases"</span>, <span class="at">x=</span> <span class="st">"Bin Quality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1338,10 +763,6 @@ attr(,"class")
 <section id="total-number-of-bases-for-all-neon-samples" class="level4">
 <h4 class="anchored" data-anchor-id="total-number-of-bases-for-all-neon-samples">Total Number of Bases for all NEON samples</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>))<span class="sc">+</span></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>)<span class="sc">+</span></span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distribution of Total Number of Bases for all NEON samples"</span>, <span class="at">y=</span><span class="st">"MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1354,12 +775,6 @@ attr(,"class")
 <section id="novel-bacteria-per-site" class="level4">
 <h4 class="anchored" data-anchor-id="novel-bacteria-per-site">Novel Bacteria per Site</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Site.x))<span class="sc">+</span></span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Novel Bacteria per Site"</span>, <span class="at">y =</span> <span class="st">"Novel Genera"</span>, <span class="at">x=</span> <span class="st">"Site"</span>)<span class="sc">+</span></span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1372,12 +787,6 @@ attr(,"class")
 <section id="phyla-of-novel-mags" class="level4">
 <h4 class="anchored" data-anchor-id="phyla-of-novel-mags">Phyla of Novel MAGs</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum))<span class="sc">+</span></span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Phyla of Novel MAGs"</span>, <span class="at">y =</span> <span class="st">"Novel Bacterial MAGs"</span>, <span class="at">x=</span> <span class="st">"Phylum"</span>) <span class="sc">+</span></span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
