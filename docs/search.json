@@ -25,7 +25,7 @@
     "href": "Methods.html",
     "title": "Methods",
     "section": "",
-    "text": "Microbial Water Color by MIchelle Banks"
+    "text": "We imported soil microbe metagenomic sequence data from the NEON data portal into R studio. We utilized R functions in order to manipulate and analyze the data, including ggplot and ggtree. We filtered the data so that it would include only information from our site, NIWO. We differentiated the phylums and orders of bacteria by looking at metagenome-assembled genomes (MAGs) and could filter the data to only include phylum Verrucomicrobia when necessary. We then graphed the data and created 50 visuals that explored relationships between Verrucromicorbiota MAG count and soil temperature; Verrucromicorbiota MAG count and soil pH; Verrucromicrobiota MAG count and soil content; Verrucromicrobiota MAG count and soil depth, as well as how their abundance compares to other phylums of bacteria depending on soil conditions."
   },
   {
     "objectID": "Discussion.html",
