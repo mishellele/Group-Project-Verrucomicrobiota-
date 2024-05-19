@@ -11,24 +11,24 @@ output:
     code_folding: hide
 bibliography: NEON.bib
 ---
+
 # Abstract
 
 Verrucomicrobiota are present in almost all soil, but it was originally thought to be at low frequencies since there were only a few studies that focused on the Verrucomicrobiota quantities. However, with ecological data from The National Ecological Observatory Network (NEON), funded by the National Science Foundation, more data has surfaced, providing information about the bacteria across ecosystems, with our data focusing on Niwot Ridge, Colorado. With the increasing temperatures due to global warming, it is important to take notice of the different bacteria that are growing and changing along with the climate. Where they require very specific environments to grow, taking notice of the different features of existing environments is massively important. In the near future where climates might not be able to keep the bacteria alive, it would be vital to provide a possible man made environment that can facilitate the bacteria growth with the data collected, allowing for a deeper understanding of the bacteria.
 
 # Motivating Reasons
 
-Bacteria play many important roles in the soil of ecosystem such as providing soil structure, soil aggregation, recycling of soil nutrients, and water recycling. They also serve an important function in breaking down organic residues, carbon compounds and simple sugars, as well as taking up nutrients into their cell membranes such as nitrogen [@noauthor_role_nodate]. These functions are important for plant growth and maintaining a healthy ecosystem, i.e. continuous recycling of nutrients, maintaining a balance of pathogenic and non-pathogenic bacterial species, and soil stability. The phylum of bacteria Verrucromicrobiota are widespread and while the research surrounding their functions is limited it is thought that they play a major role in carbon degeneration and have a greater ability to survive in a variety of conditions than previously thought. Just like other bacteria, Verrucromicrobiota must be able to adapt to the diverse microenvironments of the soil in order to provide these ecological benefits, and with increasing global temperatures that generally raise microbial activity and in turn decrease the amount of organic matter in soil [@ruan_elevated_2023] it will be important to monitor their abundance in different ecosystems across time. 
+Bacteria play many important roles in the soil of ecosystem such as providing soil structure, soil aggregation, recycling of soil nutrients, and water recycling. They also serve an important function in breaking down organic residues, carbon compounds and simple sugars, as well as taking up nutrients into their cell membranes such as nitrogen [@noauthor_role_nodate]. These functions are important for plant growth and maintaining a healthy ecosystem, i.e. continuous recycling of nutrients, maintaining a balance of pathogenic and non-pathogenic bacterial species, and soil stability. The phylum of bacteria Verrucromicrobiota are widespread and while the research surrounding their functions is limited it is thought that they play a major role in carbon degeneration and have a greater ability to survive in a variety of conditions than previously thought. Just like other bacteria, Verrucromicrobiota must be able to adapt to the diverse microenvironments of the soil in order to provide these ecological benefits, and with increasing global temperatures that generally raise microbial activity and in turn decrease the amount of organic matter in soil [@ruan_elevated_2023] it will be important to monitor their abundance in different ecosystems across time.
 
 # Introduction
 
 The National Ecological Observatory Network (NEON) funded by the National Science Foundation is a large, continental-scale project with the purpose of collecting long-term open access ecological data at various sites throughout the United States including Hawaii and Puerto Rico. This data enables researchers to conduct studies addressing questions related to important environmental challenges. The NEON database includes information on freshwater ecosystems such as rivers and streams as well as terrestrial ecosystems ranging from mountainous tundra to tropical rainforests. We are particularly interested in the microbe metagenome sequence data that NEON has collected which includes metagenome-assembled genomes (MAGs) of various phyla and orders of bacteria at different sites across the United States [@noauthor_niwot_nodate]. For our specific project, we focus on the NEON project site located in the Niwot Ridge in Boulder, Colorado (NIWO), and the bacteria Verrucomicrobiota. In our study, we are using NEON data from the NIWO site to explore the relationship between Verrucomicrobiota abundance and soil conditions, and we explore how this relationship impacts Verrucomicrobiota growth and what this could mean for the ecosystems the bacteria inhabits.
 
-Verrucomicrobiota is a free living, widespread phylum of bacteria surviving in freshwater, marine, terrestrial soil, and animal gut, and are significant contributors to carbon cycling. Despite their prevalence, they are underrepresented in databases, limiting our understanding of their ecological roles [@bergmann_under-recognized_2011]. Recent findings highlight Verrucomicrobiota's role as specialist organic polymer degraders capable of adapting to diverse environmental conditions, expanding our understanding of their ecological significance [@nixon_genome-resolved_2019]. 
-
+Verrucomicrobiota is a free living, widespread phylum of bacteria surviving in freshwater, marine, terrestrial soil, and animal gut, and are significant contributors to carbon cycling. Despite their prevalence, they are underrepresented in databases, limiting our understanding of their ecological roles [@bergmann_under-recognized_2011]. Recent findings highlight Verrucomicrobiota's role as specialist organic polymer degraders capable of adapting to diverse environmental conditions, expanding our understanding of their ecological significance [@nixon_genome-resolved_2019].
 
 # Methods
 
-We imported soil microbe metagenomic sequence data from the NEON data portal into R studio. We utilized R functions in order to manipulate and analyze the data, including ggplot and ggtree. We filtered the data so that it would include only information from our site, NIWO. We differentiated the phylums and orders of bacteria by looking at metagenome-assembled genomes (MAGs) and could filter the data to only include phylum Verrucomicrobia when necessary. We then graphed the data and created 50 visuals that explored relationships between Verrucromicorbiota MAG count and soil temperature; Verrucromicorbiota MAG count and soil pH; Verrucromicrobiota MAG count and soil content; Verrucromicrobiota MAG count and soil depth, as well as how their abundance compares to other phylums of bacteria depending on soil conditions. 
+We imported soil microbe metagenomic sequence data from the NEON data portal into R studio. We utilized R functions in order to manipulate and analyze the data, including ggplot and ggtree. We filtered the data so that it would include only information from our site, NIWO. We differentiated the phylums and orders of bacteria by looking at metagenome-assembled genomes (MAGs) and could filter the data to only include phylum Verrucomicrobia when necessary. We then graphed the data and created 50 visuals that explored relationships between Verrucromicorbiota MAG count and soil temperature; Verrucromicorbiota MAG count and soil pH; Verrucromicrobiota MAG count and soil content; Verrucromicrobiota MAG count and soil depth, as well as how their abundance compares to other phylums of bacteria depending on soil conditions.
 
 ### Loading Libraries and Data
 
@@ -426,6 +426,7 @@ write_tsv(sankey_data_allTaxa, "data/NEON/all_co_pavian.txt")
 ```{r}
 knitr::include_url("images/sankey_all_co.txt.html")
 ```
+
 #### All Individual
 
 ```{r}
@@ -480,6 +481,7 @@ knitr::include_url("images/sankey_all_ind.txt.html")
 ```
 
 #### Verrucomicrobiota Coassemblies
+
 ```{r}
 sankey_data2 <- NEON_MAGs_co %>% 
   filter(Phylum == "Verrucomicrobiota") %>% 
@@ -531,7 +533,9 @@ write_tsv(sankey_data_allTaxa, "data/NEON/verruco_co_pavian.txt")
 ```{r}
 knitr::include_url("images/sankey_verruco_co.txt.html")
 ```
+
 #### Verrucomicrobiota Individual
+
 ```{r}
 sankey_data2 <- NEON_MAGs_ind %>% 
   filter(Phylum == "Verrucomicrobiota") %>% 
@@ -584,8 +588,8 @@ write_tsv(sankey_data_allTaxa, "data/NEON/verruco_ind_pavian.txt")
 knitr::include_url("images/sankey_verruco_ind.txt.html")
 ```
 
-
 #### Niwot Ridge Individual
+
 ```{r}
 sankey_data2 <- NEON_MAGs_ind %>% 
   filter(`Site ID` == "NIWO") %>% 
@@ -637,7 +641,6 @@ write_tsv(sankey_data_allTaxa, "data/NEON/niwot_ind_pavian.txt")
 ```{r}
 knitr::include_url("images/sankey_niwot_ind.txt.html")
 ```
-
 
 ### Verrucomicrobiota Properties
 
@@ -881,7 +884,6 @@ NEON_data %>%
   coord_flip()
 ```
 
-
 # Discussion
 
 ## Environmental Data
@@ -889,7 +891,6 @@ NEON_data %>%
 We found that, overall, Verrucomicrobiota is a phylum that is found under many different environmental conditions. There were wide spreads of distribution across soil temperature and pH, but the most common conditions were temperatures between 10 and 20 degrees celsius and pH values between 6 and 7. This observation mirrors that of the overall studied MAGs. Verrucomicrobiota were found in 6 different ecosystem subtypes, and these locations were well-distributed throughout their phylogeny. Interestingly, for soil nutrients Verrucomicrobiota tended to be at the high and low ends, but not the middle, of the spectra for both nitrogen and organic carbon amounts, but both of these observations may have been influenced by sample size. Finally, the phylum was found at a variety of different depths, but the most common by far was 0.10 meters (although this is also likely influenced by the types of sampling). Overall, this would imply that Verrucomicrobiota is able to adapt to many different environments, perhaps meaning that they could resist environmental changes.
 
 We also expanded our study of environmental data into different sites, focusing on Niwot Ridge but also examining the other NEON sites due to a lack of data available for Niwot. We found correlations between soil temperature and elevation at Niwot Ridge but not for all sites, as well as a weak one between soil temperature and pH over all NEON sites. The different ecosystem subtypes had different average temperatures which was to be expected. Niwot Ridge was determined to be fully Terrestrial Soil, with a fairly even split between mineral and organic soil samples and a variety of elevations.
-
 
 ## Genome and Assembly Data
 
@@ -899,11 +900,9 @@ At Niwot Ridge, like the total data set, there was a variety of genome sizes and
 
 Looking at the overall data, there was a wide distribution of genome sizes, but a large majority were less than 5 million bases. Novel bacteria were found at all the sites, but the most common place to find novel species was in the combined assemblies. Of these novel bacteria, most were of the phylum Actinomycetota, and Verrucomicrobiota had an intermediate number. These results suggest that sampling NEON sites, including Niwot Ridge, can provide a variety of information and can contribute new genera and species, which is both exciting and useful for scientific work.
 
-
 ## Project Limitations and Next Steps
 
-This project was significantly limited by a lack of available data for both our phylum and, especially, for our site. For example, in our graph comparing soil temperature and pH at Niwot Ridge, there are only 6 points because very few environmental readings were done at our site. We also were unable to explore other factors that would have been of interest, such as chlorophyll concentration, algal bloom, and other soil nutrients such as sulfur (which is especially relevant to Verrucomicrobiota species). Future studies could investigate these factors as well as following environmental trends over time. All of this could increase our understanding of Verrucomicrobiota and other phyla’s roles in different ecosystems. 
-
+This project was significantly limited by a lack of available data for both our phylum and, especially, for our site. For example, in our graph comparing soil temperature and pH at Niwot Ridge, there are only 6 points because very few environmental readings were done at our site. We also were unable to explore other factors that would have been of interest, such as chlorophyll concentration, algal bloom, and other soil nutrients such as sulfur (which is especially relevant to Verrucomicrobiota species). Future studies could investigate these factors as well as following environmental trends over time. All of this could increase our understanding of Verrucomicrobiota and other phyla’s roles in different ecosystems.
 
 # Conclusion
 
@@ -913,7 +912,4 @@ Furthermore, the NEON data from the different sites highlight the correlation be
 
 However, the study was constricted by the data limitations, particularly the lack of other environmental data for the specific site. The data could then be gathered for future research and investigated for the other environmental factors such as chlorophyll concentrations and in particular, their role in sulfur concentrations, advancing our knowledge of microbial communities and ecosystems functioning properly
 
-
 # Bibliography
-
-

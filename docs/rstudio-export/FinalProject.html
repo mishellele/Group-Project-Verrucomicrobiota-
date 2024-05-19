@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Michelle Le, Olivia Mooradian, Jason Chen, Sofia Blomqvist">
+
+<title>Verrucomicrobiota Project - NEON Data Analysis of Verrucomicrobiota and Niwot Ridge</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Verrucomicrobiota Project</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Abstract.html"> 
+<span class="menu-text">Abstract</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Methods.html"> 
+<span class="menu-text">Methods</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Results.html"> 
+<span class="menu-text">Results</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Discussion.html"> 
+<span class="menu-text">Discussion</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Conclusion.html"> 
+<span class="menu-text">Conclusion</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#motivating-reasons" id="toc-motivating-reasons" class="nav-link" data-scroll-target="#motivating-reasons">Motivating Reasons</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#loading-libraries-and-data" id="toc-loading-libraries-and-data" class="nav-link" data-scroll-target="#loading-libraries-and-data">Loading Libraries and Data</a></li>
+  <li><a href="#creating-data-framespreparing-data" id="toc-creating-data-framespreparing-data" class="nav-link" data-scroll-target="#creating-data-framespreparing-data">Creating Data Frames/Preparing Data</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#environmental-data" id="toc-environmental-data" class="nav-link" data-scroll-target="#environmental-data">Environmental Data</a>
+  <ul class="collapse">
+  <li><a href="#soil-data---verrucomicrobiota-vs.-all-mags" id="toc-soil-data---verrucomicrobiota-vs.-all-mags" class="nav-link" data-scroll-target="#soil-data---verrucomicrobiota-vs.-all-mags">Soil Data - Verrucomicrobiota vs.&nbsp;all MAGs</a></li>
+  <li><a href="#ecosystems---verrucomicrobiota-vs.-all-mags" id="toc-ecosystems---verrucomicrobiota-vs.-all-mags" class="nav-link" data-scroll-target="#ecosystems---verrucomicrobiota-vs.-all-mags">Ecosystems - Verrucomicrobiota vs.&nbsp;all MAGs</a></li>
+  <li><a href="#verrucomicrobiota-ecosystem-subtypes-by-site" id="toc-verrucomicrobiota-ecosystem-subtypes-by-site" class="nav-link" data-scroll-target="#verrucomicrobiota-ecosystem-subtypes-by-site">Verrucomicrobiota Ecosystem Subtypes by Site</a></li>
+  <li><a href="#other-soil-properties---verrucomicrobiota" id="toc-other-soil-properties---verrucomicrobiota" class="nav-link" data-scroll-target="#other-soil-properties---verrucomicrobiota">Other Soil Properties - Verrucomicrobiota</a></li>
+  <li><a href="#site-data" id="toc-site-data" class="nav-link" data-scroll-target="#site-data">Site Data</a></li>
+  </ul></li>
+  <li><a href="#genomeassembly-data" id="toc-genomeassembly-data" class="nav-link" data-scroll-target="#genomeassembly-data">Genome/Assembly Data</a>
+  <ul class="collapse">
+  <li><a href="#sankey-plots" id="toc-sankey-plots" class="nav-link" data-scroll-target="#sankey-plots">Sankey Plots</a></li>
+  <li><a href="#verrucomicrobiota-properties" id="toc-verrucomicrobiota-properties" class="nav-link" data-scroll-target="#verrucomicrobiota-properties">Verrucomicrobiota Properties</a></li>
+  <li><a href="#verrumicrobiota-gene-count-and-scaffold-count-at-niwot-ridge" id="toc-verrumicrobiota-gene-count-and-scaffold-count-at-niwot-ridge" class="nav-link" data-scroll-target="#verrumicrobiota-gene-count-and-scaffold-count-at-niwot-ridge">Verrumicrobiota Gene Count and Scaffold Count at Niwot Ridge</a></li>
+  <li><a href="#verrucomicrobiota-scaffold-count-and-total-number-of-bases" id="toc-verrucomicrobiota-scaffold-count-and-total-number-of-bases" class="nav-link" data-scroll-target="#verrucomicrobiota-scaffold-count-and-total-number-of-bases">Verrucomicrobiota Scaffold Count and Total Number of Bases</a></li>
+  <li><a href="#niwot-ridge" id="toc-niwot-ridge" class="nav-link" data-scroll-target="#niwot-ridge">Niwot Ridge</a></li>
+  <li><a href="#general-neon-properties" id="toc-general-neon-properties" class="nav-link" data-scroll-target="#general-neon-properties">General NEON Properties</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
+  <ul class="collapse">
+  <li><a href="#environmental-data-1" id="toc-environmental-data-1" class="nav-link" data-scroll-target="#environmental-data-1">Environmental Data</a></li>
+  <li><a href="#genome-and-assembly-data" id="toc-genome-and-assembly-data" class="nav-link" data-scroll-target="#genome-and-assembly-data">Genome and Assembly Data</a></li>
+  <li><a href="#project-limitations-and-next-steps" id="toc-project-limitations-and-next-steps" class="nav-link" data-scroll-target="#project-limitations-and-next-steps">Project Limitations and Next Steps</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Bibliography</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">NEON Data Analysis of Verrucomicrobiota and Niwot Ridge</h1>
+<p class="subtitle lead">Evo-Geno Final Project Spring 2024</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Michelle Le, Olivia Mooradian, Jason Chen, Sofia Blomqvist </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+<p>Verrucomicrobiota are present in almost all soil, but it was originally thought to be at low frequencies since there were only a few studies that focused on the Verrucomicrobiota quantities. However, with ecological data from The National Ecological Observatory Network (NEON), funded by the National Science Foundation, more data has surfaced, providing information about the bacteria across ecosystems, with our data focusing on Niwot Ridge, Colorado. With the increasing temperatures due to global warming, it is important to take notice of the different bacteria that are growing and changing along with the climate. Where they require very specific environments to grow, taking notice of the different features of existing environments is massively important. In the near future where climates might not be able to keep the bacteria alive, it would be vital to provide a possible man made environment that can facilitate the bacteria growth with the data collected, allowing for a deeper understanding of the bacteria.</p>
+</section>
+<section id="motivating-reasons" class="level1">
+<h1>Motivating Reasons</h1>
+<p>Bacteria play many important roles in the soil of ecosystem such as providing soil structure, soil aggregation, recycling of soil nutrients, and water recycling. They also serve an important function in breaking down organic residues, carbon compounds and simple sugars, as well as taking up nutrients into their cell membranes such as nitrogen <span class="citation" data-cites="noauthor_role_nodate">(<a href="#ref-noauthor_role_nodate" role="doc-biblioref"><span>“Role of <span>Soil</span> <span>Bacteria</span>”</span> n.d.</a>)</span>. These functions are important for plant growth and maintaining a healthy ecosystem, i.e.&nbsp;continuous recycling of nutrients, maintaining a balance of pathogenic and non-pathogenic bacterial species, and soil stability. The phylum of bacteria Verrucromicrobiota are widespread and while the research surrounding their functions is limited it is thought that they play a major role in carbon degeneration and have a greater ability to survive in a variety of conditions than previously thought. Just like other bacteria, Verrucromicrobiota must be able to adapt to the diverse microenvironments of the soil in order to provide these ecological benefits, and with increasing global temperatures that generally raise microbial activity and in turn decrease the amount of organic matter in soil <span class="citation" data-cites="ruan_elevated_2023">(<a href="#ref-ruan_elevated_2023" role="doc-biblioref">Ruan et al. 2023</a>)</span> it will be important to monitor their abundance in different ecosystems across time.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The National Ecological Observatory Network (NEON) funded by the National Science Foundation is a large, continental-scale project with the purpose of collecting long-term open access ecological data at various sites throughout the United States including Hawaii and Puerto Rico. This data enables researchers to conduct studies addressing questions related to important environmental challenges. The NEON database includes information on freshwater ecosystems such as rivers and streams as well as terrestrial ecosystems ranging from mountainous tundra to tropical rainforests. We are particularly interested in the microbe metagenome sequence data that NEON has collected which includes metagenome-assembled genomes (MAGs) of various phyla and orders of bacteria at different sites across the United States <span class="citation" data-cites="noauthor_niwot_nodate">(<a href="#ref-noauthor_niwot_nodate" role="doc-biblioref"><span>“Niwot <span>Ridge</span> <span>NEON</span> <span></span> <span>NSF</span> <span>NEON</span> <span></span> <span>Open</span> <span>Data</span> to <span>Understand</span> Our <span>Ecosystems</span>”</span> n.d.</a>)</span>. For our specific project, we focus on the NEON project site located in the Niwot Ridge in Boulder, Colorado (NIWO), and the bacteria Verrucomicrobiota. In our study, we are using NEON data from the NIWO site to explore the relationship between Verrucomicrobiota abundance and soil conditions, and we explore how this relationship impacts Verrucomicrobiota growth and what this could mean for the ecosystems the bacteria inhabits.</p>
+<p>Verrucomicrobiota is a free living, widespread phylum of bacteria surviving in freshwater, marine, terrestrial soil, and animal gut, and are significant contributors to carbon cycling. Despite their prevalence, they are underrepresented in databases, limiting our understanding of their ecological roles <span class="citation" data-cites="bergmann_under-recognized_2011">(<a href="#ref-bergmann_under-recognized_2011" role="doc-biblioref">Bergmann et al. 2011</a>)</span>. Recent findings highlight Verrucomicrobiota’s role as specialist organic polymer degraders capable of adapting to diverse environmental conditions, expanding our understanding of their ecological significance <span class="citation" data-cites="nixon_genome-resolved_2019">(<a href="#ref-nixon_genome-resolved_2019" role="doc-biblioref">Nixon et al. 2019</a>)</span>.</p>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>We imported soil microbe metagenomic sequence data from the NEON data portal into R studio. We utilized R functions in order to manipulate and analyze the data, including ggplot and ggtree. We filtered the data so that it would include only information from our site, NIWO. We differentiated the phylums and orders of bacteria by looking at metagenome-assembled genomes (MAGs) and could filter the data to only include phylum Verrucomicrobia when necessary. We then graphed the data and created 50 visuals that explored relationships between Verrucromicorbiota MAG count and soil temperature; Verrucromicorbiota MAG count and soil pH; Verrucromicrobiota MAG count and soil content; Verrucromicrobiota MAG count and soil depth, as well as how their abundance compares to other phylums of bacteria depending on soil conditions.</p>
+<section id="loading-libraries-and-data" class="level3">
+<h3 class="anchored" data-anchor-id="loading-libraries-and-data">Loading Libraries and Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtree)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TDbook)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rphylopic)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treeio)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytree)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TreeTools)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phytools)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggnewscale)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtreeExtra)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstar)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/NEON/GOLD_Study_ID_Gs0161344_NEON_2024_4_21.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">GOLD Study ID</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Methods</span><span class="st">`</span>, <span class="st">`</span><span class="at">Created By</span><span class="st">`</span>, <span class="st">`</span><span class="at">Date Added</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Lineage</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"Assembly Type"</span> <span class="ot">=</span> <span class="fu">case_when</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"NEON combined assembly"</span> <span class="sc">~</span> <span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Individual"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Assembly Type"</span>, str_replace, <span class="st">"NEON combined assembly"</span>, <span class="st">"Combined"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"d__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"p__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"c__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"o__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"f__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"g__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"s__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Domain"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Phylum"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Class"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Order"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Family"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genus"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Species"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genome Name"</span>, str_replace, <span class="st">"Terrestrial soil microbial communities from "</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site"</span>,<span class="st">"Sample Name"</span>), <span class="st">" - "</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Sample Name"</span>, str_replace, <span class="st">"-comp-1"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site ID"</span>,<span class="st">"subplot.layer.date"</span>), <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>,) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">subplot.layer.date</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Subplot"</span>, <span class="st">"Layer"</span>, <span class="st">"Date"</span>), <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>NEON_metagenomes <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"data/NEON/exported_img_data_Gs0161344_NEON.tsv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">Domain</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sequencing Status</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sequencing Center</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">Genome Name / Sample Name</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="st">'re-annotation'</span>, <span class="at">negate =</span> T)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="st">'WREF plot'</span>, <span class="at">negate =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>NEON_metagenomes <span class="ot">&lt;-</span> NEON_metagenomes <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genome Name"</span>, str_replace, <span class="st">"Terrestrial soil microbial communities from "</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site"</span>,<span class="st">"Sample Name"</span>), <span class="st">" - "</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Sample Name"</span>, str_replace, <span class="st">"-comp-1"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site ID"</span>,<span class="st">"subplot.layer.date"</span>), <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>,) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">subplot.layer.date</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Subplot"</span>, <span class="st">"Layer"</span>, <span class="st">"Date"</span>), <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>NEON_chemistry <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"data/NEON/neon_plot_soilChem1_metadata.tsv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"genomicsSampleID"</span>, str_replace, <span class="st">"-COMP"</span>, <span class="st">""</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-data-framespreparing-data" class="level3">
+<h3 class="anchored" data-anchor-id="creating-data-framespreparing-data">Creating Data Frames/Preparing Data</h3>
+<section id="neon" class="level4">
+<h4 class="anchored" data-anchor-id="neon">NEON</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="ot">&lt;-</span> NEON_MAGs <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(NEON_metagenomes, <span class="at">by =</span> <span class="st">"Sample Name"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(NEON_chemistry, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Sample Name"</span> <span class="ot">=</span> <span class="st">"genomicsSampleID"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"label"</span> <span class="ot">=</span> <span class="st">"Bin ID"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="ot">&lt;-</span> NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(<span class="fu">str_detect</span>(Phylum, <span class="st">"Verrucomicrobiota"</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="ot">&lt;-</span> NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Site.x, <span class="st">"Niwot Ridge"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="trees" class="level4">
+<h4 class="anchored" data-anchor-id="trees">Trees</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tree_arc <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"data/NEON/gtdbtk.ar53.decorated.tree"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tree_bac <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"data/NEON/gtdbtk.bac120.decorated.tree"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>node_vector_bac <span class="ot">=</span> <span class="fu">c</span>(tree_bac<span class="sc">$</span>tip.label,tree_bac<span class="sc">$</span>node.label)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"Verrucomicrobiota"</span>, node_vector_bac, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "'1.0:p__Verrucomicrobiota; c__Verrucomicrobiae'"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="fu">grep</span>(<span class="st">"Verrucomicrobiota"</span>, node_vector_bac, <span class="at">value =</span> <span class="cn">TRUE</span>), node_vector_bac)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2563</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tree_bac_preorder <span class="ot">&lt;-</span> <span class="fu">Preorder</span>(tree_bac)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tree_Verruco <span class="ot">&lt;-</span> <span class="fu">Subtree</span>(tree_bac_preorder, <span class="dv">2563</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<section id="environmental-data" class="level2">
+<h2 class="anchored" data-anchor-id="environmental-data">Environmental Data</h2>
+<section id="soil-data---verrucomicrobiota-vs.-all-mags" class="level3">
+<h3 class="anchored" data-anchor-id="soil-data---verrucomicrobiota-vs.-all-mags">Soil Data - Verrucomicrobiota vs.&nbsp;all MAGs</h3>
+<section id="verrucomicrobiota-soil-temperature-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-soil-temperature-distribution">Verrucomicrobiota Soil Temperature Distribution</h4>
+<div class="cell" data-fig_width="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilTemp)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of MAGs based on soil temperature"</span>, <span class="at">y =</span> <span class="st">"Verrucomicrobiota MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-soil-ph-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-soil-ph-distribution">Verrucomicrobiota Soil pH Distribution</h4>
+<div class="cell" data-fig_width="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilInWaterpH)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of MAGs based on soil pH"</span>, <span class="at">y =</span> <span class="st">"Verrucomicrobiota MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil pH"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="total-mags-soil-temperature" class="level4">
+<h4 class="anchored" data-anchor-id="total-mags-soil-temperature">Total MAGs Soil Temperature</h4>
+<div class="cell" data-fig_width="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilTemp, <span class="at">fill=</span> Phylum)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Total MAGs based on soil temperature"</span>, <span class="at">y =</span> <span class="st">"MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="total-mags-soil-ph" class="level4">
+<h4 class="anchored" data-anchor-id="total-mags-soil-ph">Total MAGs Soil pH</h4>
+<div class="cell" data-fig_width="12" data-fig_height="6">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> soilInWaterpH, <span class="at">fill=</span> Phylum)) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Total MAGs based on soil in water pH"</span>, <span class="at">y =</span> <span class="st">"MAGs"</span>, <span class="at">x=</span> <span class="st">"Soil pH"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$y
+[1] "MAGs"
+
+$x
+[1] "Soil pH"
+
+$title
+[1] "Distribution of Total MAGs based on soil in water pH"
+
+attr(,"class")
+[1] "labels"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ecosystems---verrucomicrobiota-vs.-all-mags" class="level3">
+<h3 class="anchored" data-anchor-id="ecosystems---verrucomicrobiota-vs.-all-mags">Ecosystems - Verrucomicrobiota vs.&nbsp;all MAGs</h3>
+<section id="verrucomicrobiota-ecosystem-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-ecosystem-distribution">Verrucomicrobiota Ecosystem Distribution</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>))<span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Ecosystem Subtypes"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-ecosystem-distribution-by-order" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-ecosystem-distribution-by-order">Verrucomicrobiota Ecosystem Distribution by Order</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Ecosystem"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="verrucomicrobiota-ecosystem-subtypes-by-site" class="level3">
+<h3 class="anchored" data-anchor-id="verrucomicrobiota-ecosystem-subtypes-by-site">Verrucomicrobiota Ecosystem Subtypes by Site</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">fill =</span> <span class="st">`</span><span class="at">Site ID.x</span><span class="st">`</span>))<span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Ecosystem Subtype"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="total-mags-ecosystem-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="total-mags-ecosystem-distribution">Total MAGs Ecosystem Distribution</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">fill=</span> Phylum))<span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"MAG Distribution by Ecosystem"</span>, <span class="at">y=</span><span class="st">"MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-and-ecosystem-subtype-phylogeny" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-and-ecosystem-subtype-phylogeny">Verrucomicrobiota and Ecosystem Subtype Phylogeny</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtree</span>(tree_Verruco, <span class="at">layout=</span><span class="st">"circular"</span>)  <span class="sc">%&lt;+%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  NEON_data <span class="sc">+</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point2</span>(<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">color=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>))<span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Verrucomicrobiota with Ecosystem Subtypes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="other-soil-properties---verrucomicrobiota" class="level3">
+<h3 class="anchored" data-anchor-id="other-soil-properties---verrucomicrobiota">Other Soil Properties - Verrucomicrobiota</h3>
+<section id="verrucomicrobiota-distribution-and-nitrogen-content" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-distribution-and-nitrogen-content">Verrucomicrobiota Distribution and Nitrogen Content</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> nitrogenPercent, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Nitrogen Content"</span>, <span class="at">x=</span><span class="st">"Nitrogen Percent"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-distribution-and-organic-carbon-content" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-distribution-and-organic-carbon-content">Verrucomicrobiota Distribution and Organic Carbon Content</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> organicCPercent, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Organic Carbon Content"</span>, <span class="at">x=</span><span class="st">"Organic Carbon Percent"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-distribution-and-depth-of-sample" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-distribution-and-depth-of-sample">Verrucomicrobiota Distribution and Depth of Sample</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Depth In Meters</span><span class="st">`</span>, <span class="at">fill=</span>Order))<span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution by Depth of Sample"</span>, <span class="at">x=</span><span class="st">"Depth (meters)"</span>, <span class="at">y=</span><span class="st">"Verrucomicrobiota MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="site-data" class="level3">
+<h3 class="anchored" data-anchor-id="site-data">Site Data</h3>
+<section id="soil-temperature-and-elevation-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="soil-temperature-and-elevation-at-niwot-ridge">Soil Temperature and Elevation at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>elevation, <span class="at">y=</span>soilTemp))<span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between soil temperature and elevation at Niwot Ridge"</span>, <span class="at">y =</span> <span class="st">"Soil Temperature"</span>, <span class="at">x=</span> <span class="st">"Elevation (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="soil-temperature-and-elevation-at-all-sites" class="level4">
+<h4 class="anchored" data-anchor-id="soil-temperature-and-elevation-at-all-sites">Soil Temperature and Elevation at all sites</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>elevation, <span class="at">y=</span>soilTemp))<span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between soil temperature and elevation at all sites"</span>, <span class="at">y =</span> <span class="st">"Soil Temperature"</span>, <span class="at">x=</span> <span class="st">"Elevation (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="soil-ph-and-soil-temperature---all-sites" class="level4">
+<h4 class="anchored" data-anchor-id="soil-ph-and-soil-temperature---all-sites">Soil pH and Soil Temperature - All Sites</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>soilTemp, <span class="at">y=</span>soilInWaterpH, <span class="at">color =</span> Phylum))<span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between temperature and pH"</span>, <span class="at">y =</span> <span class="st">"Soil pH"</span>, <span class="at">x=</span> <span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ecosystem-subtype-and-soil-temperature" class="level4">
+<h4 class="anchored" data-anchor-id="ecosystem-subtype-and-soil-temperature">Ecosystem Subtype and Soil Temperature</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Ecosystem Subtype</span><span class="st">`</span>, <span class="at">y=</span>soilTemp))<span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ecosystem Subtype Temperature Distribution"</span>, <span class="at">y=</span><span class="st">"Soil Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="habitat-of-each-phylum-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="habitat-of-each-phylum-at-niwot-ridge">Habitat of each Phylum at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Habitat</span><span class="st">`</span>, <span class="at">fill=</span>Phylum))<span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Habitat of Samples at NIWO"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="mineral-vs-organic-soil-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="mineral-vs-organic-soil-at-niwot-ridge">Mineral vs Organic Soil at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO<span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Layer.x))<span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Abundance of Verrucomicrobiota in Mineral vs. Organic Soil"</span>)<span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Mineral vs. Organic Soil"</span>, <span class="at">y =</span> <span class="st">"Verrucomicrobiota Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="elevation-of-samples-found-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="elevation-of-samples-found-at-niwot-ridge">Elevation of Samples Found at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span>   </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">elevation</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="at">color =</span> <span class="st">`</span><span class="at">Phylum</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Elevation and Samples Found at NIWO"</span>)<span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>, <span class="at">vjust=</span><span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="genomeassembly-data" class="level2">
+<h2 class="anchored" data-anchor-id="genomeassembly-data">Genome/Assembly Data</h2>
+<section id="sankey-plots" class="level3">
+<h3 class="anchored" data-anchor-id="sankey-plots">Sankey Plots</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_test <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/NEON/GOLD_Study_ID_Gs0161344_NEON_2024_4_21.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove columns that are not needed for data analysis</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">GOLD Study ID</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Methods</span><span class="st">`</span>, <span class="st">`</span><span class="at">Created By</span><span class="st">`</span>, <span class="st">`</span><span class="at">Date Added</span><span class="st">`</span>, <span class="st">`</span><span class="at">Bin Lineage</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new column with the Assembly Type</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"Assembly Type"</span> <span class="ot">=</span> <span class="fu">case_when</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"NEON combined assembly"</span> <span class="sc">~</span> <span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Individual"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Assembly Type"</span>, str_replace, <span class="st">"NEON combined assembly"</span>, <span class="st">"Combined"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"d__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"p__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"c__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"o__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"f__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"g__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"GTDB-Tk Taxonomy Lineage"</span>, str_replace, <span class="st">"s__"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Domain"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Phylum"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Class"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Order"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Family"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genus"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Species"</span>, na_if,<span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get rid of the the common string "Soil microbial communities from "</span></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Genome Name"</span>, str_replace, <span class="st">"Terrestrial soil microbial communities from "</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the first `-` to split the column in two</span></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Genome Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site"</span>,<span class="st">"Sample Name"</span>), <span class="st">" - "</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get rid of the the common string "S-comp-1"</span></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"Sample Name"</span>, str_replace, <span class="st">"-comp-1"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># separate the Sample Name into Site ID and plot info</span></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Site ID"</span>,<span class="st">"subplot.layer.date"</span>), <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>,) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># separate the plot info into 3 columns</span></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">subplot.layer.date</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Subplot"</span>, <span class="st">"Layer"</span>, <span class="st">"Date"</span>), <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_ind <span class="ot">&lt;-</span> NEON_MAGs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Assembly Type</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Individual"</span>) </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_co <span class="ot">&lt;-</span> NEON_MAGs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Assembly Type</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Combined"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="all-combined" class="level4">
+<h4 class="anchored" data-anchor-id="all-combined">All Combined</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_co <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"data/NEON/all_co_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_all_co.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="images/sankey_all_co.txt.html" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+</section>
+<section id="all-individual" class="level4">
+<h4 class="anchored" data-anchor-id="all-individual">All Individual</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_ind <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"data/NEON/all_ind_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_all_ind.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="images/sankey_all_ind.txt.html" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+</section>
+<section id="verrucomicrobiota-coassemblies" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-coassemblies">Verrucomicrobiota Coassemblies</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_co <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"data/NEON/verruco_co_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_verruco_co.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="images/sankey_verruco_co.txt.html" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+</section>
+<section id="verrucomicrobiota-individual" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-individual">Verrucomicrobiota Individual</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_ind <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"data/NEON/verruco_ind_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_verruco_ind.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="images/sankey_verruco_ind.txt.html" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+</section>
+<section id="niwot-ridge-individual" class="level4">
+<h4 class="anchored" data-anchor-id="niwot-ridge-individual">Niwot Ridge Individual</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> NEON_MAGs_ind <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Site ID</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"NIWO"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'Archaea'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">GTDB-Tk Taxonomy Lineage</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span>), <span class="st">";"</span>) </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>sankey_data2[] <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sankey_data2, <span class="dv">1</span>, zoo<span class="sc">::</span>na.locf))</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>sankey_data2 <span class="ot">&lt;-</span> sankey_data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"classification"</span>, <span class="fu">c</span>(Domain, Phylum, Class, Order, Family, Genus, Species), <span class="at">sep=</span><span class="st">'; '</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Archaea"</span>, <span class="st">"d__Archaea"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"Bacteria"</span>, <span class="st">"d__Bacteria"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|p__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|c__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|o__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|f__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|g__"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="st">"classification"</span>, str_replace, <span class="st">"; "</span>, <span class="st">"|s__"</span>)</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>sankey_data_s <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>sankey_data_g <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>sankey_data_f <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>sankey_data_o <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>sankey_data_c <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>sankey_data_p <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>sankey_data_d <span class="ot">&lt;-</span> sankey_data2</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>sankey_data_g<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|s__.*"</span>, <span class="st">""</span>, sankey_data_g<span class="sc">$</span>classification)  </span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>sankey_data_f<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|g__.*"</span>, <span class="st">""</span>, sankey_data_f<span class="sc">$</span>classification)  </span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>sankey_data_o<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|f__.*"</span>, <span class="st">""</span>, sankey_data_o<span class="sc">$</span>classification)  </span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>sankey_data_c<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|o__.*"</span>, <span class="st">""</span>, sankey_data_c<span class="sc">$</span>classification)  </span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>sankey_data_p<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|c__.*"</span>, <span class="st">""</span>, sankey_data_p<span class="sc">$</span>classification)  </span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>sankey_data_d<span class="sc">$</span>classification <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|p__.*"</span>, <span class="st">""</span>, sankey_data_d<span class="sc">$</span>classification)   </span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>sankey_data_allTaxa <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classification =</span> <span class="fu">as.factor</span>(classification)) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(classification) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">#SampleID</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">classification</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Metaphlan2_Analysis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">n</span><span class="st">`</span>) </span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(sankey_data_allTaxa, <span class="st">"data/NEON/niwot_ind_pavian.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"images/sankey_niwot_ind.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="images/sankey_niwot_ind.txt.html" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+</section>
+</section>
+<section id="verrucomicrobiota-properties" class="level3">
+<h3 class="anchored" data-anchor-id="verrucomicrobiota-properties">Verrucomicrobiota Properties</h3>
+<section id="verrucomicrobiota-combined-and-individual-assemblies" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-combined-and-individual-assemblies">Verrucomicrobiota Combined and Individual Assemblies</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtree</span>(tree_Verruco, <span class="at">layout=</span><span class="st">"circular"</span>)  <span class="sc">%&lt;+%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  NEON_data <span class="sc">+</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point2</span>(<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">color=</span><span class="st">`</span><span class="at">Assembly Type</span><span class="st">`</span>))<span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Verrucomicrobiota Combined and Individual"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-genome-size-and-gene-count" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-genome-size-and-gene-count">Verrucomicrobiota Genome size and Gene Count</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Gene Count</span><span class="st">`</span> ))<span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Genome Size vs. Gene Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-order-genome-size-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-order-genome-size-distribution">Verrucomicrobiota Order Genome Size Distribution</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Order, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span> ))<span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Order Genome Size Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="histogram-of-verrucomicrobiota-total-number-of-bases" class="level4">
+<h4 class="anchored" data-anchor-id="histogram-of-verrucomicrobiota-total-number-of-bases">Histogram of Verrucomicrobiota Total Number of Bases</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-genus-genome-size-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-genus-genome-size-distribution">Verrucomicrobiota Genus Genome Size Distribution</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Genus, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span> ))<span class="sc">+</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Distribution with Total Number of Base"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-genera-gene-count-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-genera-gene-count-distribution">Verrucomicrobiota Genera Gene Count Distribution</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Genus, <span class="at">y=</span> <span class="st">`</span><span class="at">Gene Count</span><span class="st">`</span> ))<span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Genera Gene Count Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="s-rrna-distribution-by-genus" class="level4">
+<h4 class="anchored" data-anchor-id="s-rrna-distribution-by-genus">16s rRNA Distribution by Genus</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Genus, <span class="at">y =</span> <span class="st">`</span><span class="at">16s rRNA</span><span class="st">`</span>, <span class="at">fill =</span> Genus))<span class="sc">+</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"16s rRNA Distribution by Genus"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-genera-trna-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-genera-trna-distribution">Verrucomicrobiota Genera tRNA Distribution</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Genus, <span class="at">y=</span> <span class="st">`</span><span class="at">tRNA Genes</span><span class="st">`</span> ))<span class="sc">+</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Genera tRNA Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="novel-verrucomicrobiota-by-order" class="level4">
+<h4 class="anchored" data-anchor-id="novel-verrucomicrobiota-by-order">Novel Verrucomicrobiota by Order</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Order))<span class="sc">+</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Novel Verrucomicrobiota"</span>, <span class="at">y =</span> <span class="st">"Novel Bacterial MAGs"</span>, <span class="at">x=</span> <span class="st">"Order"</span>) <span class="sc">+</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-scaffold-count-and-bin-completeness" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-scaffold-count-and-bin-completeness">Verrucomicrobiota Scaffold Count and Bin Completeness</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Scaffold Count</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Bin Completeness</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verrucomicrobiota Scaffold Count and MAG Completeness"</span>,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Scaffold Count"</span>,</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Bin Completeness"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-histogram-of-total-number-of-bases-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-histogram-of-total-number-of-bases-at-niwot-ridge">Verrucomicrobiota Histogram of Total Number of Bases at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-total-number-of-bases-and-bin-quality" class="level4">
+<h4 class="anchored" data-anchor-id="verrucomicrobiota-total-number-of-bases-and-bin-quality">Verrucomicrobiota Total Number of Bases and Bin quality</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Bin Quality</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum))<span class="sc">+</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between Total Number of Bases and Bin Quality for Verrucomicrobiota"</span>, <span class="at">y =</span> <span class="st">"Total Number of Bases"</span>, <span class="at">x=</span> <span class="st">"Bin Quality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="verrumicrobiota-gene-count-and-scaffold-count-at-niwot-ridge" class="level3">
+<h3 class="anchored" data-anchor-id="verrumicrobiota-gene-count-and-scaffold-count-at-niwot-ridge">Verrumicrobiota Gene Count and Scaffold Count at Niwot Ridge</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Phylum <span class="sc">==</span> <span class="st">"Verrucomicrobiota"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Scaffold Count</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum ))<span class="sc">+</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gene Count and Scaffold Count at NIWO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="verrucomicrobiota-scaffold-count-and-total-number-of-bases" class="level3">
+<h3 class="anchored" data-anchor-id="verrucomicrobiota-scaffold-count-and-total-number-of-bases">Verrucomicrobiota Scaffold Count and Total Number of Bases</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>NEON_data_Verruco <span class="sc">%&gt;%</span> </span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Scaffold Count</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum ))<span class="sc">+</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gene Count and Scaffold Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="niwot-ridge" class="level3">
+<h3 class="anchored" data-anchor-id="niwot-ridge">Niwot Ridge</h3>
+<section id="phyla-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="phyla-at-niwot-ridge">Phyla at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(Phylum), <span class="at">fill=</span>Class))<span class="sc">+</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Phyla at Niwot Ridge"</span>, <span class="at">y =</span> <span class="st">"MAGs"</span>, <span class="at">x=</span> <span class="st">"Phylum"</span>, <span class="at">fill =</span> <span class="st">"Class"</span>)<span class="sc">+</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="genome-size-distribution-at-niwot-ridge-boxplot" class="level4">
+<h4 class="anchored" data-anchor-id="genome-size-distribution-at-niwot-ridge-boxplot">Genome Size Distribution at Niwot Ridge boxplot</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span> ))<span class="sc">+</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Genome Size Distribution at Niwot Ridge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gene-count-distribution-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="gene-count-distribution-at-niwot-ridge">Gene Count Distribution at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum, <span class="at">y=</span> <span class="st">`</span><span class="at">Gene Count</span><span class="st">`</span>))<span class="sc">+</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gene Count Distribution at Niwot Ridge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-57-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="trna-distribution-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="trna-distribution-at-niwot-ridge">tRNA Distribution at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum, <span class="at">y=</span> <span class="st">`</span><span class="at">tRNA Genes</span><span class="st">`</span> ))<span class="sc">+</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"tRNA Distribution at Niwot Ridge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="novel-bacteria-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="novel-bacteria-at-niwot-ridge">Novel Bacteria at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum))<span class="sc">+</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Phyla of Novel MAGs"</span>, <span class="at">y =</span> <span class="st">"Novel Bacterial MAGs"</span>, <span class="at">x=</span> <span class="st">"Phylum"</span>) <span class="sc">+</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="nlcdclass-of-samples-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="nlcdclass-of-samples-at-niwot-ridge">nlcdclass of samples at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NEON_data_NIWO, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">nlcdClass</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Sample Name</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between nlcdclass and samples at NIWO"</span>,</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sample Name"</span>,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"nlcdClass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="histogram-of-total-number-of-bases-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="histogram-of-total-number-of-bases-at-niwot-ridge">Histogram of Total Number of Bases at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum)) <span class="sc">+</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="total-number-of-bases-and-bin-quality-at-niwot-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="total-number-of-bases-and-bin-quality-at-niwot-ridge">Total Number of Bases and Bin quality at Niwot Ridge</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>NEON_data_NIWO <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Bin Quality</span><span class="st">`</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>, <span class="at">color =</span> Phylum))<span class="sc">+</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship between Total Number of Bases and Bin Quality at NIWO"</span>, <span class="at">y =</span> <span class="st">"Total Number of Bases"</span>, <span class="at">x=</span> <span class="st">"Bin Quality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="general-neon-properties" class="level3">
+<h3 class="anchored" data-anchor-id="general-neon-properties">General NEON Properties</h3>
+<section id="total-number-of-bases-for-all-neon-samples" class="level4">
+<h4 class="anchored" data-anchor-id="total-number-of-bases-for-all-neon-samples">Total Number of Bases for all NEON samples</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> <span class="st">`</span><span class="at">Total Number of Bases</span><span class="st">`</span>))<span class="sc">+</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>)<span class="sc">+</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distribution of Total Number of Bases for all NEON samples"</span>, <span class="at">y=</span><span class="st">"MAGs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="novel-bacteria-per-site" class="level4">
+<h4 class="anchored" data-anchor-id="novel-bacteria-per-site">Novel Bacteria per Site</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Site.x))<span class="sc">+</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Novel Bacteria per Site"</span>, <span class="at">y =</span> <span class="st">"Novel Genera"</span>, <span class="at">x=</span> <span class="st">"Site"</span>)<span class="sc">+</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="phyla-of-novel-mags" class="level4">
+<h4 class="anchored" data-anchor-id="phyla-of-novel-mags">Phyla of Novel MAGs</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>NEON_data <span class="sc">%&gt;%</span> </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Genus)) <span class="sc">%&gt;%</span> </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> Phylum))<span class="sc">+</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Phyla of Novel MAGs"</span>, <span class="at">y =</span> <span class="st">"Novel Bacterial MAGs"</span>, <span class="at">x=</span> <span class="st">"Phylum"</span>) <span class="sc">+</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_files/figure-html/unnamed-chunk-65-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<section id="environmental-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="environmental-data-1">Environmental Data</h2>
+<p>We found that, overall, Verrucomicrobiota is a phylum that is found under many different environmental conditions. There were wide spreads of distribution across soil temperature and pH, but the most common conditions were temperatures between 10 and 20 degrees celsius and pH values between 6 and 7. This observation mirrors that of the overall studied MAGs. Verrucomicrobiota were found in 6 different ecosystem subtypes, and these locations were well-distributed throughout their phylogeny. Interestingly, for soil nutrients Verrucomicrobiota tended to be at the high and low ends, but not the middle, of the spectra for both nitrogen and organic carbon amounts, but both of these observations may have been influenced by sample size. Finally, the phylum was found at a variety of different depths, but the most common by far was 0.10 meters (although this is also likely influenced by the types of sampling). Overall, this would imply that Verrucomicrobiota is able to adapt to many different environments, perhaps meaning that they could resist environmental changes.</p>
+<p>We also expanded our study of environmental data into different sites, focusing on Niwot Ridge but also examining the other NEON sites due to a lack of data available for Niwot. We found correlations between soil temperature and elevation at Niwot Ridge but not for all sites, as well as a weak one between soil temperature and pH over all NEON sites. The different ecosystem subtypes had different average temperatures which was to be expected. Niwot Ridge was determined to be fully Terrestrial Soil, with a fairly even split between mineral and organic soil samples and a variety of elevations.</p>
+</section>
+<section id="genome-and-assembly-data" class="level2">
+<h2 class="anchored" data-anchor-id="genome-and-assembly-data">Genome and Assembly Data</h2>
+<p>In addition to environmental factors we looked into the genomic properties of the Verrucomicrobiota included in this study. There was a clear relationship between genome size and gene count, which was to be expected. Genome size varied slightly between orders of Verrucomicrobiota, but dramatically between genera, with JAFAMB01 having the largest genomes. There was also variety in 16s rRNA counts and tRNA counts. Several novel species of Verrucomicrobiota were discovered, with most of them being of the order Chthoniobacterales For their assemblies, there was not a noticeable relationship between scaffold count, bin completeness, and genome size, and a majority of the samples were of medium bin quality.</p>
+<p>At Niwot Ridge, like the total data set, there was a variety of genome sizes and phyla. The most common phylum was Pseudomonadota, and Verrucomicrobiota was the fourth most common type. Of novel bacteria, most were Actinomycetota with Verrucomicrobiota a close second.</p>
+<p>Looking at the overall data, there was a wide distribution of genome sizes, but a large majority were less than 5 million bases. Novel bacteria were found at all the sites, but the most common place to find novel species was in the combined assemblies. Of these novel bacteria, most were of the phylum Actinomycetota, and Verrucomicrobiota had an intermediate number. These results suggest that sampling NEON sites, including Niwot Ridge, can provide a variety of information and can contribute new genera and species, which is both exciting and useful for scientific work.</p>
+</section>
+<section id="project-limitations-and-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="project-limitations-and-next-steps">Project Limitations and Next Steps</h2>
+<p>This project was significantly limited by a lack of available data for both our phylum and, especially, for our site. For example, in our graph comparing soil temperature and pH at Niwot Ridge, there are only 6 points because very few environmental readings were done at our site. We also were unable to explore other factors that would have been of interest, such as chlorophyll concentration, algal bloom, and other soil nutrients such as sulfur (which is especially relevant to Verrucomicrobiota species). Future studies could investigate these factors as well as following environmental trends over time. All of this could increase our understanding of Verrucomicrobiota and other phyla’s roles in different ecosystems.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The study provides a comprehensive insight into the different distributions, environmental preferences, and genomic characteristics of Verrucomicrobiota across various ecosystems and some of the studies having a focus on the Niwot Ridge. Studying the verrucomicrobiota showed a remarkable adaptability to diverse environmental conditions, pH levels, soil depths, and nutrient concentrations. It shows their resilience to different environments and conditions.</p>
+<p>Furthermore, the NEON data from the different sites highlight the correlation between some of the factors that are important in ecological research like the soil pH, temperature, and elevation across other NEON sites, emphasizing the need for specific investigations. Analysis of the data showed patterns in genome size and gene count among others.</p>
+<p>However, the study was constricted by the data limitations, particularly the lack of other environmental data for the specific site. The data could then be gathered for future research and investigated for the other environmental factors such as chlorophyll concentrations and in particular, their role in sulfur concentrations, advancing our knowledge of microbial communities and ecosystems functioning properly</p>
+</section>
+<section id="bibliography" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Bibliography</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bergmann_under-recognized_2011" class="csl-entry" role="listitem">
+Bergmann, Gaddy T., Scott T. Bates, Kathryn G. Eilers, Christian L. Lauber, J. Gregory Caporaso, William A. Walters, Rob Knight, and Noah Fierer. 2011. <span>“The Under-Recognized Dominance of <span>Verrucomicrobia</span> in Soil Bacterial Communities.”</span> <em>Soil Biology &amp; Biochemistry</em> 43 (7): 1450–55. <a href="https://doi.org/10.1016/j.soilbio.2011.03.012">https://doi.org/10.1016/j.soilbio.2011.03.012</a>.
+</div>
+<div id="ref-noauthor_niwot_nodate" class="csl-entry" role="listitem">
+<span>“Niwot <span>Ridge</span> <span>NEON</span> <span></span> <span>NSF</span> <span>NEON</span> <span></span> <span>Open</span> <span>Data</span> to <span>Understand</span> Our <span>Ecosystems</span>.”</span> n.d. Accessed May 17, 2024. <a href="https://www.neonscience.org/field-sites/niwo">https://www.neonscience.org/field-sites/niwo</a>.
+</div>
+<div id="ref-nixon_genome-resolved_2019" class="csl-entry" role="listitem">
+Nixon, Sophie L., Rebecca A. Daly, Mikayla A. Borton, Lindsey M. Solden, Susan A. Welch, David R. Cole, Paula J. Mouser, Michael J. Wilkins, and Kelly C. Wrighton. 2019. <span>“Genome-<span>Resolved</span> <span>Metagenomics</span> <span>Extends</span> the <span>Environmental</span> <span>Distribution</span> of the <span>Verrucomicrobia</span> <span>Phylum</span> to the <span>Deep</span> <span>Terrestrial</span> <span>Subsurface</span>.”</span> <em>mSphere</em> 4 (6): e00613–19. <a href="https://doi.org/10.1128/mSphere.00613-19">https://doi.org/10.1128/mSphere.00613-19</a>.
+</div>
+<div id="ref-noauthor_role_nodate" class="csl-entry" role="listitem">
+<span>“Role of <span>Soil</span> <span>Bacteria</span>.”</span> n.d. Accessed May 17, 2024. <a href="https://ohioline.osu.edu/factsheet/anr-36">https://ohioline.osu.edu/factsheet/anr-36</a>.
+</div>
+<div id="ref-ruan_elevated_2023" class="csl-entry" role="listitem">
+Ruan, Yang, Yakov Kuzyakov, Xiaoyu Liu, Xuhui Zhang, Qicheng Xu, Junjie Guo, Shiwei Guo, Qirong Shen, Yunfeng Yang, and Ning Ling. 2023. <span>“Elevated Temperature and <span>CO2</span> Strongly Affect the Growth Strategies of Soil Bacteria.”</span> <em>Nature Communications</em> 14 (1): 391. <a href="https://doi.org/10.1038/s41467-023-36086-y">https://doi.org/10.1038/s41467-023-36086-y</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -18,12 +18,13 @@ library(ggimage)
 library(rphylopic)
 library(treeio)
 library(tidytree)
-#library(ape)
+library(ape)
 library(TreeTools)
 library(phytools)
 ```
 
 ### Reading in files
+
 Let's load the MAG table with the new GTDB annotations with the updated taxonomy database
 
 ```{r, warning=FALSE, message=FALSE}
@@ -75,6 +76,7 @@ NEON_metagenomes <- read_tsv("data/NEON/exported_img_data_Gs0161344_NEON.tsv") %
 ```
 
 Now let's reformat `Genome Name` as we did for the above MAG table
+
 ```{r}
 NEON_metagenomes <- NEON_metagenomes %>% 
   # Get rid of the the common string "Soil microbial communities from "
@@ -89,7 +91,6 @@ NEON_metagenomes <- NEON_metagenomes %>%
   separate(`subplot.layer.date`, c("Subplot", "Layer", "Date"), "-") 
 ```
 
-
 ## NEON Chemistry data
 
 ```{r, warning=FALSE, message=FALSE}
@@ -97,7 +98,6 @@ NEON_chemistry <- read_tsv("data/NEON/neon_plot_soilChem1_metadata.tsv") %>%
   # remove -COMP from genomicsSampleID
   mutate_at("genomicsSampleID", str_replace, "-COMP", "") 
 ```
-
 
 ### Join the NEON MAG, metagenome and chemistry dataframes into a single data fram
 
@@ -107,18 +107,17 @@ NEON_MAGs_metagenomes_chemistry <- NEON_MAGs %>%
   left_join(NEON_chemistry, by = c("Sample Name" = "genomicsSampleID"))
 ```
 
-
 ### Reading in the tree files
 
 ```{r}
-tree_arc <- tread.tree("data/NEON/gtdbtk.ar53.decorated.tree")
+tree_arc <- read.tree("data/NEON/gtdbtk.ar53.decorated.tree")
 tree_bac <- read.tree("data/NEON/gtdbtk.bac120.decorated.tree")
 ```
 
-
 ### Getting your subtree
 
-You first need to find the internal node on the tree corresponding to your Domain, Phylum or Class. Below is an expample 
+You first need to find the internal node on the tree corresponding to your Domain, Phylum or Class. Below is an expample
+
 ```{r}
 # Make a vector with the internal node lables
 node_vector_bac = c(tree_bac$tip.label,tree_bac$node.label)
@@ -135,13 +134,11 @@ tree_bac_node_Chloroflexa <- Preorder(tree_bac)
 tree_Chloroflexa <- Subtree(tree_bac_node_Chloroflexa, 1712)
 ```
 
-
 ```{r, fig.height = 10, fig.width = 10}
 ggtree(tree_Chloroflexa) +
   geom_tiplab(size=3) +
   xlim(0,20)
 ```
-
 
 ```{r, fig.height = 12, fig.width = 11}
 ggtree(tree_Chloroflexa, layout="circular") + 
@@ -149,8 +146,3 @@ ggtree(tree_Chloroflexa, layout="circular") +
     theme_tree() +
     xlim(0,20)
 ```
-
-
-
-
-

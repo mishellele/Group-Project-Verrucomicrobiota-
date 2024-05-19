@@ -10,20 +10,19 @@ output:
 
 ## Learning objectives
 
-* Visualizing and annotating trees 
+-   Visualizing and annotating trees
 
+This lab draws on examples in
 
-This lab draws on examples in 
-
-* [Data Integration, Manipulation and Visualization of Phylogenetic Trees](https://yulab-smu.top/treedata-book/)
-* [ggtreeExtra](https://bioconductor.org/packages/devel/bioc/vignettes/ggtreeExtra/inst/doc/ggtreeExtra.html)
-* [ape package documentation](https://cran.r-project.org/web//packages/ape/ape.pdf)
-* [phytools package documentation](https://cran.r-project.org/web/packages/phytools/phytools.pdf)
-* [Working with Trees using the ape * Package](https://eeob-macroevolution.github.io/Practicals/Intro_to_Phylo/intro_to_phylo.html)
-* [Introduction to phylogenies in R](http://phytools.org/eqg/Exercise_3.2/)
-* [Drawing Phylogenies in R: Basic and Advanced Features With ape](9https://cran.r-project.org/web/packages/ape/vignettes/DrawingPhylogenies.pdf)
-* [gtdb forum](https://forum.gtdb.ecogenomic.org/)
-* [gtdb commands](https://ecogenomics.github.io/GTDBTk/commands/de_novo_wf.html)
+-   [Data Integration, Manipulation and Visualization of Phylogenetic Trees](https://yulab-smu.top/treedata-book/)
+-   [ggtreeExtra](https://bioconductor.org/packages/devel/bioc/vignettes/ggtreeExtra/inst/doc/ggtreeExtra.html)
+-   [ape package documentation](https://cran.r-project.org/web//packages/ape/ape.pdf)
+-   [phytools package documentation](https://cran.r-project.org/web/packages/phytools/phytools.pdf)
+-   [Working with Trees using the ape \* Package](https://eeob-macroevolution.github.io/Practicals/Intro_to_Phylo/intro_to_phylo.html)
+-   [Introduction to phylogenies in R](http://phytools.org/eqg/Exercise_3.2/)
+-   [Drawing Phylogenies in R: Basic and Advanced Features With ape](9https://cran.r-project.org/web/packages/ape/vignettes/DrawingPhylogenies.pdf)
+-   [gtdb forum](https://forum.gtdb.ecogenomic.org/)
+-   [gtdb commands](https://ecogenomics.github.io/GTDBTk/commands/de_novo_wf.html)
 
 Two of the packages are available through Bioconductor
 
@@ -61,7 +60,7 @@ library(ggstar)
 Let's load the MAG table with the new GTDB annotations with the updated taxonomy database
 
 ```{r, warning=FALSE, message=FALSE}
-NEON_MAGs <- read_csv("data/NEON/GOLD_Study_ID_Gs0161344_NEON_2024_4_21.csv") %>% 
+NEON_MAGs <- read_csv("data/NEON/GOLD_Study_ID_Gs0161344_NEON_2024_4_21.csv") %>%  
   # remove columns that are not needed for data analysis
   select(-c(`GOLD Study ID`, `Bin Methods`, `Created By`, `Date Added`, `Bin Lineage`)) %>% 
   # create a new column with the Assembly Type
@@ -109,6 +108,7 @@ NEON_metagenomes <- read_tsv("data/NEON/exported_img_data_Gs0161344_NEON.tsv") %
 ```
 
 Now let's reformat `Genome Name` as we did for the above MAG table
+
 ```{r}
 NEON_metagenomes <- NEON_metagenomes %>% 
   # Get rid of the the common string "Soil microbial communities from "
@@ -147,10 +147,10 @@ tree_arc <- read.tree("data/NEON/gtdbtk.ar53.decorated.tree")
 tree_bac <- read.tree("data/NEON/gtdbtk.bac120.decorated.tree")
 ```
 
-
 ### Getting your subtree
 
-You first need to find the internal node on the tree corresponding to your Domain, Phylum or Class. Below is an expample 
+You first need to find the internal node on the tree corresponding to your Domain, Phylum or Class. Below is an expample
+
 ```{r}
 # Make a vector with the internal node labels
 node_vector_bac = c(tree_bac$tip.label,tree_bac$node.label)
@@ -192,12 +192,14 @@ ggtree(tree_Chloroflexota, layout="circular") +
     theme_tree() +
     xlim(0,20)
 ```
+
 Circular with taxonomic group highlighted
 
 ```{r}
 ggtree(tree_bac, layout="circular") +
     geom_hilight(node=1712, fill="steelblue", alpha=.6) 
 ```
+
 ### Circular no branch lengths taxonomic group labeled
 
 ```{r}
@@ -206,6 +208,7 @@ ggtree(tree_bac, layout="circular", branch.length="none") +
     geom_cladelab(node=1712, label="Chloroflexota", align=TRUE,  
                   offset = 0, textcolor='steelblue', barcolor='steelblue')
 ```
+
 ### Circular no branch lengths taxonomic group collapsed
 
 ```{r}
@@ -215,7 +218,9 @@ ggtree(tree_bac, layout="circular", branch.length="none") %>%
   geom_cladelab(node=55, label="Chloroflexota", align=TRUE,  
                   offset = 2, textcolor='steelblue')
 ```
-### Circular no branch lengths taxonomic group collapsed as triangle and labeled 
+
+### Circular no branch lengths taxonomic group collapsed as triangle and labeled
+
 ```{r}
 p <- ggtree(tree_bac, layout="circular", branch.length="none")
 scaleClade(p, 1712, .2) %>% collapse(1712, 'min', fill="steelblue")  +
@@ -243,7 +248,6 @@ ggtree(tree_Chloroflexota, layout="circular")  %<+%
   geom_point(mapping=aes(color=Class, shape = `Assembly Type`)) 
 ```
 
-
 ```{r}
 ggtree(tree_Chloroflexota)  %<+%
   NEON_MAGs_metagenomes_chemistry + 
@@ -252,7 +256,7 @@ ggtree(tree_Chloroflexota)  %<+%
   geom_point(mapping=aes(color=`Ecosystem Subtype`)) 
 ```
 
-### Adding a gradient to your tree 
+### Adding a gradient to your tree
 
 ```{r}
 ggtree(tree_Chloroflexota)  %<+%
@@ -310,6 +314,7 @@ ggtree(tree_Chloroflexota, layout="circular", branch.length="none") %<+%
       pwidth=0.25 # width of the external layer, default is 0.2 times of x range of tree.
       ) 
 ```
+
 ### Adding multiple rings to a circular tree
 
 ```{r, fig.height}
