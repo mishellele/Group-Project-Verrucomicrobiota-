@@ -1,0 +1,11 @@
+---
+title: "Conclusion"
+---
+
+The study provides a comprehensive insight into the different distributions, environmental preferences, and genomic characteristics of Verrucomicrobiota across various ecosystems and some of the studies having a focus on the Niwot Ridge. Studying the Verrucomicrobiota showed a remarkable adaptability to diverse environmental conditions, pH levels, soil depths, and nutrient concentrations. It shows their resilience to different environments and conditions.
+
+Furthermore, the NEON data from the different sites highlight the correlation between some of the factors that are important in ecological research like the soil pH, temperature, and elevation across other NEON sites, emphasizing the need for specific investigations. Analysis of the data showed patterns in genome size and gene count among others. 
+
+However, the study was constricted by the data limitations, particularly the lack of other environmental data for the specific site. The data could then be gathered for future research and investigated for the other environmental factors such as chlorophyll concentrations and in particular, their role in sulfur concentrations, advancing our knowledge of microbial communities and ecosystems functioning properly
+
+\
