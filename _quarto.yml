@@ -6,8 +6,6 @@ website:
   title: "Verrucomicrobiota Project"
   navbar:
     left:
-      - href: index.qmd
-        text: Theme
       - href: Abstract.qmd
         text: Abstract
       - href: Methods.qmd
