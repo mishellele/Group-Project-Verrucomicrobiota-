@@ -1,0 +1,15 @@
+#SampleID	Metaphlan2_Analysis
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|JAFAMB01||	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|JAFAMB01|JAFAMB01|	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|Terrimicrobiaceae||	14
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|Terrimicrobiaceae|CAMASH01|	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|AV133|	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|AV17|	14
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|AV40|	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|AV69|	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|AV80|	42
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|JAJPGZ01|	14
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|Palsa-1382|	14
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Chthoniobacterales|UBA10450|Udaeobacter|	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Methylacidiphilales|GAS474||	7
+Bacteria|Verrucomicrobiota|Verrucomicrobiae|Opitutales|Opitutaceae|Palsa-1447|	21
